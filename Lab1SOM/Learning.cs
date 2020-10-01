@@ -17,12 +17,16 @@ namespace Lab1SOM
         private double constStartLearningRate = 0.9;
         //количество итераций обучения
         private int m_iNumIterations = 7000;
+        private double R = 0;
 
-        public Learning(int x, int y, List<string> listData)
+        public Learning(int x, int y, List<string> listData, double R , double constStartLearningRate, int m_iNumIterations)
         {
             sizeX = x;
             sizeY = y;
             sizeZ = getZ(ref listData);
+            this.R = R;
+            this.constStartLearningRate = constStartLearningRate;
+            this.m_iNumIterations = m_iNumIterations;
             VectorW = new double[sizeY, sizeX, sizeZ];
             step1(ref sizeY, ref sizeX, ref sizeZ);
 
@@ -81,8 +85,9 @@ namespace Lab1SOM
 
         //Инициализация вектора весов (для каждого из узлов сети) случайными значениями
         private void step1(ref int y, ref int x, ref int z)
-        {
+        {            
             List<double[]> list = new List<double[]>();
+            
             list.Add(new double[] { 255, 0, 0 });
             list.Add(new double[] { 0, 128, 0 });
             list.Add(new double[] { 0, 0, 255 });
@@ -91,8 +96,8 @@ namespace Lab1SOM
             list.Add(new double[] { 255, 255, 0 });
             list.Add(new double[] { 255, 165, 0 });
             list.Add(new double[] { 128, 0, 128 });
-
-
+          
+            
             Random rnd = new Random();
             for (int j = 0; j < y; j++)
                 for (int i = 0; i < x; i++)
@@ -162,9 +167,8 @@ namespace Lab1SOM
         //радиус соседства, изменеяется со временем
         private double funcDMapRadius(int k)
         {
-            double m_dMapRadius = Math.Max(sizeX, sizeY) / 2;
-            double m_dTimeConstant = m_iNumIterations / m_dMapRadius;
-            return m_dMapRadius * Math.Exp(-(double)k / m_dTimeConstant);
+            double m_dTimeConstant = m_iNumIterations / R;
+            return R * Math.Exp(-(double)k / m_dTimeConstant);
         }
 
         //переобразовать входную строку в список целых значений

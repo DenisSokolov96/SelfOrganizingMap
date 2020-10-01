@@ -107,27 +107,26 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(552, 7);
+            this.pictureBox1.Location = new System.Drawing.Point(554, 36);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(600, 713);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.Size = new System.Drawing.Size(600, 600);
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
             // 
             // richTextBox2
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(37, 396);
+            this.richTextBox2.Location = new System.Drawing.Point(36, 505);
             this.richTextBox2.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(475, 159);
+            this.richTextBox2.Size = new System.Drawing.Size(475, 102);
             this.richTextBox2.TabIndex = 9;
             this.richTextBox2.Text = "";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(37, 352);
+            this.label2.Location = new System.Drawing.Point(34, 484);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(98, 17);
@@ -162,7 +161,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1160, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1186, 24);
             this.menuStrip1.TabIndex = 13;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -208,7 +207,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(37, 583);
+            this.label5.Location = new System.Drawing.Point(37, 293);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(136, 17);
             this.label5.TabIndex = 16;
@@ -217,7 +216,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(37, 674);
+            this.label6.Location = new System.Drawing.Point(37, 384);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(153, 17);
             this.label6.TabIndex = 17;
@@ -226,7 +225,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(254, 674);
+            this.label7.Location = new System.Drawing.Point(254, 384);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(55, 17);
             this.label7.TabIndex = 18;
@@ -234,15 +233,15 @@
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(37, 604);
+            this.trackBar1.Location = new System.Drawing.Point(36, 313);
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(216, 56);
             this.trackBar1.TabIndex = 19;
-            this.trackBar1.Value = 9;
+            this.trackBar1.Value = 1;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(40, 699);
+            this.textBox2.Location = new System.Drawing.Point(40, 409);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(104, 22);
             this.textBox2.TabIndex = 20;
@@ -251,7 +250,7 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(257, 699);
+            this.textBox3.Location = new System.Drawing.Point(257, 409);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(93, 22);
             this.textBox3.TabIndex = 21;
@@ -262,7 +261,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1160, 733);
+            this.ClientSize = new System.Drawing.Size(1186, 653);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.trackBar1);

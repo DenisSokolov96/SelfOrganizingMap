@@ -29,6 +29,8 @@ namespace Lab1SOM
         private void Draw() {                     
 
             Graphics g = pictureBox1.CreateGraphics();
+            int y = pictureBox1.Width / sizeY;
+            int x = pictureBox1.Height / sizeX;
             for (int i = 0; i < sizeX; i++)
                 for (int j = 0; j < sizeY; j++)
                 {
@@ -54,31 +56,33 @@ namespace Lab1SOM
                     if (a2 < 0) a2 = 0;
                     if (a3 < 0) a3 = 0;
                     
-
                     if ((i != 0) && (j != 0))
                     {
                         g.FillRectangle(new SolidBrush(Color.FromArgb((int)a1, (int)a2, (int)a3)),
                                                               j * pictureBox1.Width / sizeY - 1, i * pictureBox1.Height / sizeX - 1,
-                                                      (j + 1) * pictureBox1.Width / sizeY - 1, (i + 1) * pictureBox1.Height / sizeX - 1);
+                                                    y+1, x+1 );
                     }
-                    if ((i == 0) && (j == 0)) {
+                    if ((i == 0) && (j == 0))
+                    {
                         g.FillRectangle(new SolidBrush(Color.FromArgb((int)a1, (int)a2, (int)a3)),
                                                              j * pictureBox1.Width / sizeY, i * pictureBox1.Height / sizeX,
-                                                     (j + 1) * pictureBox1.Width / sizeY, (i + 1) * pictureBox1.Height / sizeX);
+                                                     y+1, x+1);
                     }
                     if ((i == 0) && (j != 0))
                     {
                         g.FillRectangle(new SolidBrush(Color.FromArgb((int)a1, (int)a2, (int)a3)),
                                                              j * pictureBox1.Width / sizeY - 1, i * pictureBox1.Height / sizeX,
-                                                     (j + 1) * pictureBox1.Width / sizeY, (i + 1) * pictureBox1.Height / sizeX);
+                                                  y+1, x+1);
                     }
                     if ((i != 0) && (j == 0))
-                    {
+                    {                        
                         g.FillRectangle(new SolidBrush(Color.FromArgb((int)a1, (int)a2, (int)a3)),
                                                              j * pictureBox1.Width / sizeY, i * pictureBox1.Height / sizeX -1,
-                                                     (j + 1) * pictureBox1.Width / sizeY, (i + 1) * pictureBox1.Height / sizeX);
+                                                     y+1, x+1);
                     }
-                }    
+                }
+
+            g.Dispose();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -109,7 +113,7 @@ namespace Lab1SOM
                 sizeY = 30;
                 sizeX = 30;
                 R = Math.Max(sizeX, sizeY) / 2;
-                speed = 0.9;
+                speed = 0.1;
                 iterat = 7000;
             }
 
@@ -161,9 +165,14 @@ namespace Lab1SOM
 
             Graphics g2 = pictureBox1.CreateGraphics();
 
-            g2.FillRectangle(new SolidBrush(Color.White), learning.znJ * pictureBox1.Width / sizeY + 1, learning.znI * pictureBox1.Height / sizeX + 1,
-                                                    (learning.znJ + 1) * pictureBox1.Width / sizeY - 1, (learning.znI + 1) * pictureBox1.Height / sizeX - 1);
-            g2.Dispose();
+            int y = pictureBox1.Width / sizeY;
+            int x = pictureBox1.Height / sizeX;
+            g2.DrawRectangle(new Pen(Color.White),
+                                        learning.znJ * y, learning.znI *  x ,
+                                        y , x);
+
+             g2.Dispose();
+            
         }
 
        

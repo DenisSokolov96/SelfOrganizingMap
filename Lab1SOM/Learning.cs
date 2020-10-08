@@ -36,8 +36,8 @@ namespace Lab1SOM
             int k = 0;
             do
             {
-                string setVector = step2(ref listData);
-                if (setVector.Equals("stop")) {
+                int[] setVector = step2(ref listData);
+                if (setVector[0] == -1) {
                     listData.Clear();
                     listData.AddRange(spisok.ToArray());
                     setVector = step2(ref listData);
@@ -109,47 +109,41 @@ namespace Lab1SOM
         }
 
         // количество итераций, которые будет выполнять алгоритм обучения
-        private double Eps(string vector, int dx, int dy)
+        private double Eps(int[] vector, int dx, int dy)
         {
-            List<int> list = masToList(ref vector);
-
             double eps = 0.0;
-            for (int i = 0; i < list.Count; i++)
-                eps += Math.Abs(list[i] - VectorW[dy, dx, i]);
+            for (int i = 0; i < vector.Length; i++)
+                eps += Math.Abs(vector[i] - VectorW[dy, dx, i]);
             
-            return eps * (1 / list.Count);
+            return eps * (1 / vector.Length);
         }
 
         //Из обучающего множества случайным образом выбирается вектор.
-        private string step2(ref List<string> listData)
+        private int[] step2(ref List<string> listData)
         {
-            if (listData.Count == 0) return "stop";
+            if (listData.Count == 0) return new int[] { -1 };
             Random rnd = new Random();
             int k = rnd.Next(0, listData.Count);
             string setVector = listData[k];
-            listData.RemoveAt(k);
-            return setVector;
+            listData.RemoveAt(k);            
+            return masToList(ref setVector);
         }
 
         //поиск близких значений
-        private double step3(ref int y, ref int x,ref string vector)
+        private double step3(ref int y, ref int x,ref int[] vector)
         {
-            List<int> list = masToList(ref vector);
-
             double distance = 0;           
-            for (int i = 0; i < list.Count; i++)
-                distance += (list[i] - VectorW[y, x, i]) * (list[i] - VectorW[y, x, i]);
+            for (int i = 0; i < vector.Length; i++)
+                distance += (vector[i] - VectorW[y, x, i]) * (vector[i] - VectorW[y, x, i]);
             
             return Math.Sqrt(distance);
         }
 
         //регулировка веса
-        private void step4(ref int dy, ref int dx, ref string vector, ref int k, ref double dist)
+        private void step4(ref int dy, ref int dx, ref int[] vector, ref int k, ref double dist)
         {
-            List<int> list = masToList(ref vector);
-            
             for (int i = 0; i < sizeZ; i++)
-                VectorW[dy, dx, i] += funcT(k, dist) * funcSpeedL(k) * (list[i] - VectorW[dy, dx, i]);
+                VectorW[dy, dx, i] += funcT(k, dist) * funcSpeedL(k) * (vector[i] - VectorW[dy, dx, i]);
         }
 
         // степень влияния расстояния узла от BMU на его обучение
@@ -172,7 +166,7 @@ namespace Lab1SOM
         }
 
         //переобразовать входную строку в список целых значений
-        private List<int> masToList(ref string vector) {
+        private int[] masToList(ref string vector) {
             List<int> list = new List<int>();
             list.Add(0);
             int ki = 0;
@@ -186,14 +180,14 @@ namespace Lab1SOM
                 }
             }
 
-            return list;
+            return list.ToArray();
         }
 
         // получить кол-во весов в узле
         private int getZ(ref List<string> listData) {
 
             string str = listData[0];
-            return masToList(ref str).Count;
+            return masToList(ref str).Length;
         }
     }
 }
